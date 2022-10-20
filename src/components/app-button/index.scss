@@ -1,0 +1,19 @@
+.app-button {
+    min-width: 106px;
+    padding: 8px;
+    background-color: #FFFFFF;
+    color: #2662C9;
+    border: 2px solid #2662C9;
+    border-radius: 40px;
+    cursor: pointer;
+
+    &_active, &:hover {
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.04), 0px 8px 16px rgba(0, 0, 0, 0.08);
+        background-color: #2662C9;
+        color: white;
+    }
+
+    &:hover {
+        transition: ease-out 300ms;
+    }
+}
