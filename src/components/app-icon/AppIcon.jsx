@@ -54,7 +54,7 @@ const AppIcon = props => {
       return <IconOmega {...props} />;
     case "icon-skin":
       return <IconSkin {...props} />;
-      case "icon-sleep":
+    case "icon-sleep":
       return <IconSleep {...props} />;
     case "icon-slimming-down":
       return <IconSlimmingDown {...props} />;
