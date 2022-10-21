@@ -12,6 +12,7 @@ const AppButton = ({isActive, text}) => {
             <AppText
                 fontSize={16}
                 text={text}
+								color="inherit"
             />
         </button>
     );
