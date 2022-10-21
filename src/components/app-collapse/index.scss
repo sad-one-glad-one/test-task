@@ -24,9 +24,16 @@
 		}
 
 		&-chevron {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			transform: rotate(180deg);
 		}
 	}
 
-
+	&__body {
+		height: 0;
+		overflow: hidden;
+		transition: height ease .3s;
+	}
 }

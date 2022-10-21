@@ -17,7 +17,12 @@ function App() {
 				<AppButton text={'Добавить'} />
 			</div>
 			<AppTabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-			<AppCollapse />
+			<AppCollapse>
+				Somebody once told me the world is gonna roll me<br/>
+				I ain't the sharpest tool in the shed<br/>
+				She was looking kind of d*mb with her finger and her thumb<br/>
+				In the shape of an L on her forehead
+			</AppCollapse>
       <div style={{display:'grid', gridTemplateColumns: "repeat(6,1fr)"}}>
         <AppIcon name="icon-anti-age" width="64" height="64" color="teal" opacity="0.7" />
         <AppIcon name="icon-antioxydants" width="64" height="64" color="teal" opacity="0.5" />

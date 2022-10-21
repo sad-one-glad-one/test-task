@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AppIcon } from '../app-icon/AppIcon';
 import AppText from '../app-text/AppText';
 import "./index.scss"
 
-const AppCollapse = () => {
+const AppCollapse = ({children}) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const handleEvent = () => {
 		setIsOpen(!isOpen)
 	}
+
+	const collapseBodyRef = useRef()
 
 	return (
 		<div className="app-collapse" onClick={()=>handleEvent()}>
@@ -41,7 +43,20 @@ const AppCollapse = () => {
 					/>
 				</div>
 			</div>
-			<div className="app-collapse__body">
+			<div 
+				className="app-collapse__body" 
+				ref={collapseBodyRef}
+				style={
+					isOpen 
+						? {
+							height: collapseBodyRef.current.scrollHeight + "px"
+							}
+						: {
+							height: "0px"
+							}
+				}
+			>
+				{children}
 			</div>
 		</div>
 	);
