@@ -1,9 +1,58 @@
-import React from 'react';
+import React, {useState, useEffect, useRef} from 'react';
+import { AppIcon } from '../app-icon/AppIcon';
+import AppText from '../app-text/AppText';
+import "./index.scss"
+import listenForOutsideClicks from './ListenForOutsideClicks';
 
-const AppSelect = () => {
+const AppSelect = ({label, options, selectedOption, setSelectedOption}) => {
+	const [isOpen, setIsOpen] = useState(false)
+	const toggleSelect = () => {
+		setIsOpen(!isOpen)
+	}
+
+	const selectRef = useRef(null)
+  const [listening, setListening] = useState(false)
+  useEffect(listenForOutsideClicks(listening, setListening, selectRef, setIsOpen))
+
+	let flippedChevronClass = "app-select__btn-icon_flipped"
+
 	return (
-		<div>
-			select
+		<div className="app-select" ref={selectRef}>
+			{label && <AppText text={label} fontSize={12} lineHeight={14} />}
+			<button 
+				className="app-select__btn"
+				onClick={() => toggleSelect()}
+			>
+				<AppText
+					text={selectedOption}
+				/>
+				<div className={`app-select__btn-icon align-center ${isOpen ? flippedChevronClass : ""}`}>
+					<AppIcon
+						name="icon-chevron-up"
+						width="24"
+						height="24"
+						color="rgba(0, 0, 0, 0.87)"
+					/>
+				</div>
+			</button>
+			{isOpen && (
+				<ul className="app-select__list">
+					{options.map((option) => (
+						<li 
+							className="app-select__list-item"
+							key={option.name}
+							onClick={() => {
+								setSelectedOption(option.name)
+								toggleSelect()
+							}}
+						>
+							<AppText
+								text={option.name}
+							/>
+						</li>
+					))}
+				</ul>
+				)}
 		</div>
 	);
 };

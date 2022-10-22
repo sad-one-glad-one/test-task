@@ -5,10 +5,18 @@ import AppButton from "./components/app-button/AppButton";
 import { AppIcon } from "./components/app-icon/AppIcon";
 import AppTabs from "./components/app-tabs/AppTabs";
 import AppCollapse from "./components/app-collapse/AppCollapse";
+import AppSelect from "./components/app-select/AppSelect";
 
 function App() {
 	const tabs = [{text: "по времени приёма", index: 1}, {text: "по биодобавке", index: 2}]
 	const [activeTab, setActiveTab] = useState(1)
+
+	const selectOptions = [
+		{name: 'Ежедневно'},
+		{name: 'Через день'},
+		{name: 'Раз в неделю'},
+	]
+	const [selectedOption, setSelectedOption] = useState('Ежедневно')
 
   return (
     <div className="app" style={{display:'grid', gridTemplateColumns: '1fr', gridRowGap: '24px'}}>
@@ -23,6 +31,12 @@ function App() {
 				She was looking kind of d*mb with her finger and her thumb<br/>
 				In the shape of an L on her forehead
 			</AppCollapse>
+			<AppSelect 
+				label="Как принимать?" 
+				options={selectOptions} 
+				selectedOption={selectedOption} 
+				setSelectedOption={setSelectedOption} 
+			/>
       <div style={{display:'grid', gridTemplateColumns: "repeat(6,1fr)"}}>
         <AppIcon name="icon-anti-age" width="64" height="64" color="teal" opacity="0.7" />
         <AppIcon name="icon-antioxydants" width="64" height="64" color="teal" opacity="0.5" />

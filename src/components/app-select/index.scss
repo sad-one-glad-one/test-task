@@ -1,0 +1,51 @@
+.app-select {
+	position: relative;
+	user-select: none;
+
+	&__btn {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		grid-column-gap: 8px;
+		width: 100%;
+		background: #FFFFFF;
+		border: 1px solid rgba(0, 0, 0, 0.16);
+		border-radius: 8px;
+		padding: 12px 16px;
+		margin-top: 2px;
+		cursor: pointer;
+
+		&-icon {
+			transform: rotate(180deg);
+			transition: transform ease 0.3s;
+	
+			&_flipped {
+				transform: rotate(360deg);
+			}
+		}
+	}
+
+	&__list {
+		position: absolute;
+		top: 110%;
+		left: 0;
+		right: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		background-color: #FFFFFF;
+		border: 1px solid rgba(0, 0, 0, 0.16);
+		border-radius: 8px;
+		padding: 12px 0;
+
+		&-item {
+			width: 100%;
+			padding: 8px 16px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.1);
+				transition: all ease-in-out 0.3s;
+			}
+		}
+	}
+}
