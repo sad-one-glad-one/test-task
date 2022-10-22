@@ -2,12 +2,11 @@ import React from "react";
 import AppText from "../app-text/AppText";
 import "./index.scss";
 
-const AppButton = ({isActive, text}) => {
+const AppButton = ({isActive, text, ...props}) => {
     return (
         <button
-            className={
-                `app-button ${isActive ? 'app-button_active'  : ''}`
-            }
+						{...props}
+            className={`app-button ${isActive ? 'app-button_active'  : ''}`}
         >
             <AppText
                 fontSize={16}
