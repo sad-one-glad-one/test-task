@@ -14,7 +14,8 @@ const AppCollapse = ({children}) => {
 	
 	const tempText = "5 шт: Гидрокситриптофан (5-htp), Цинк + В6, Мультиви" +
 									"5 шт: Гидрокситриптофан (5-htp), Цинк + В6, Мультиви5 шт:"
-
+	// TODO: подумать над расширением компонента
+	 
 	return (
 		<div className="app-collapse">
 			<button className="app-collapse__header" onClick={()=>handleEvent()}>
