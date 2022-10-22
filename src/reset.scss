@@ -18,3 +18,13 @@ a, a:hover, a:visited {
 p, a {
     font-family: 'Roboto', 'sans-serif';
 }
+
+ul {
+	list-style: none;
+}
+
+.align-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
