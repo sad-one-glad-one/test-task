@@ -17,7 +17,7 @@ const AppCollapse = ({children}) => {
 
 	return (
 		<div className="app-collapse">
-			<div className="app-collapse__header" onClick={()=>handleEvent()}>
+			<button className="app-collapse__header" onClick={()=>handleEvent()}>
 				<div className="app-collapse__header-inner app-collapse__header-inner_left">
 					<div className={`app-collapse__header-chevron align-center ${isOpen ? flippedChevronClass : ""}`}>
 						<AppIcon
@@ -56,7 +56,7 @@ const AppCollapse = ({children}) => {
 						/>
 					</div>
 				</div>
-			</div>
+			</button>
 			<div 
 				className="app-collapse__body" 
 				ref={collapseBodyRef}
