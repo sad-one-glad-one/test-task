@@ -2,13 +2,15 @@
 	background: #FFFFFF;
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
 	border-radius: 8px;
-	padding: 12px 16px;
-	cursor: pointer;
 
 	&__header {
-		display: flex;
+		display: grid;
+		grid-template-columns: max-content auto;
 		justify-content: space-between;
 		align-items: center;
+		grid-column-gap: 16px;
+		padding: 12px 16px;
+		cursor: pointer;
 		
 		&-inner {
 			display: flex;
@@ -20,14 +22,22 @@
 			}
 			&_right {
 				grid-column-gap: 8px;
+
+				.app-text {
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
 			}
 		}
 
 		&-chevron {
-			display: flex;
-			justify-content: center;
-			align-items: center;
 			transform: rotate(180deg);
+			transition: transform ease 0.3s;
+
+			&_flipped {
+				transform: rotate(0deg);
+			}
 		}
 	}
 
@@ -35,5 +45,21 @@
 		height: 0;
 		overflow: hidden;
 		transition: height ease .3s;
+
+		&-inner {
+			padding: 12px 16px 16px 16px;
+			border-top: 1px solid rgba(0, 0, 0, 0.16);
+		}
+	}
+
+	.align-center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__text-wrap {
+		max-width: 350px;
+		width: 100%;
 	}
 }

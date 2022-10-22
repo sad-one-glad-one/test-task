@@ -8,14 +8,18 @@ const AppCollapse = ({children}) => {
 	const handleEvent = () => {
 		setIsOpen(!isOpen)
 	}
+	const flippedChevronClass ="app-collapse__header-chevron_flipped"
 
 	const collapseBodyRef = useRef()
+	
+	const tempText = "5 шт: Гидрокситриптофан (5-htp), Цинк + В6, Мультиви" +
+									"5 шт: Гидрокситриптофан (5-htp), Цинк + В6, Мультиви5 шт:"
 
 	return (
-		<div className="app-collapse" onClick={()=>handleEvent()}>
-			<div className="app-collapse__header">
+		<div className="app-collapse">
+			<div className="app-collapse__header" onClick={()=>handleEvent()}>
 				<div className="app-collapse__header-inner app-collapse__header-inner_left">
-					<div className="app-collapse__header-chevron">
+					<div className={`app-collapse__header-chevron align-center ${isOpen ? flippedChevronClass : ""}`}>
 						<AppIcon
 							name="icon-chevron-up" 
 							width="24" 
@@ -30,17 +34,27 @@ const AppCollapse = ({children}) => {
 					/>
 				</div>
 				<div className="app-collapse__header-inner app-collapse__header-inner_right">
-					<AppText 
-						text="5 шт: Гидрокситриптофан (5-htp), Цинк + В6, Мультиви..." 
-						fontSize={14}
-						lineHeight={24} 
-					/>
-					<AppIcon 
-						name="icon-trash" 
-						width="24" 
-						height="24" 
-						color="#A61911"
-					/>
+					<div className="app-collapse__text-wrap">
+						<AppText 
+							text={tempText} 
+							fontSize={14}
+							lineHeight={24} 
+						/>
+					</div>
+					<div
+						className="align-center"
+						onClick={(e) => {
+							e.stopPropagation()
+							alert('remove')
+						}}
+					>
+						<AppIcon 
+							name="icon-trash" 
+							width="24" 
+							height="24" 
+							color="#A61911"
+						/>
+					</div>
 				</div>
 			</div>
 			<div 
@@ -56,7 +70,9 @@ const AppCollapse = ({children}) => {
 							}
 				}
 			>
-				{children}
+				<div className="app-collapse__body-inner">
+					{children}
+				</div>
 			</div>
 		</div>
 	);
