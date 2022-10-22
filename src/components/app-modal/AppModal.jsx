@@ -1,9 +1,18 @@
 import React from 'react';
+import "./index.scss"
 
-const AppModal = ({isOpen, setIsOpen}) => {
+const AppModal = ({isOpen, setIsOpen, children}) => {
 	return (
-		<div>
-			{isOpen? <h1>modal</h1> : ''}
+		<div 
+			className={`app-modal ${isOpen ? 'app-modal_opened' : ''}`}
+			onClick={() => setIsOpen(false)}
+		>
+			<div 
+				className={`app-modal__content ${isOpen ? 'app-modal_opened' : ''}`}
+				onClick={(e) => e.stopPropagation()}
+			>
+				{children}
+			</div>
 		</div>
 	);
 };

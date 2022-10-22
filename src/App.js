@@ -30,7 +30,12 @@ function App() {
 			<AppTabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
 			<div>
 				<AppButton text="OPEN MODAL" onClick={() => setIsOpenModal(true)}/>
-				<AppModal isOpen={isOpenModal} setIsOpen={setIsOpenModal} />
+				<AppModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}>
+					Somebody once told me the world is gonna roll me<br/>
+					I ain't the sharpest tool in the shed<br/>
+					She was looking kind of d*mb with her finger and her thumb<br/>
+					In the shape of an L on her forehead
+				</AppModal>
 			</div>
 			<AppCollapse>
 				Somebody once told me the world is gonna roll me<br/>
