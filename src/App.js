@@ -6,6 +6,7 @@ import { AppIcon } from "./components/app-icon/AppIcon";
 import AppTabs from "./components/app-tabs/AppTabs";
 import AppCollapse from "./components/app-collapse/AppCollapse";
 import AppSelect from "./components/app-select/AppSelect";
+import AppModal from "./components/app-modal/AppModal";
 
 function App() {
 	const tabs = [{text: "по времени приёма", index: 1}, {text: "по биодобавке", index: 2}]
@@ -18,6 +19,8 @@ function App() {
 	]
 	const [selectedOption, setSelectedOption] = useState('Ежедневно')
 
+	const [isOpenModal, setIsOpenModal] = useState(false)
+
   return (
     <div className="app" style={{display:'grid', gridTemplateColumns: '1fr', gridRowGap: '24px'}}>
       <AppText text="Гидрокситриптофан (5-htp)" fontSize={16} fontWeight={500}/>
@@ -25,6 +28,10 @@ function App() {
 				<AppButton text={'Добавить'} />
 			</div>
 			<AppTabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+			<div>
+				<AppButton text="OPEN MODAL" onClick={() => setIsOpenModal(true)}/>
+				<AppModal isOpen={isOpenModal} setIsOpen={setIsOpenModal} />
+			</div>
 			<AppCollapse>
 				Somebody once told me the world is gonna roll me<br/>
 				I ain't the sharpest tool in the shed<br/>
