@@ -1,0 +1,50 @@
+.app-sidebar {
+	width: 100%;
+	height: 100vh;
+	border-right: 1px solid rgba(0, 0, 0, 0.32);
+	transition: max-width ease .3s;
+
+	&__head {
+		padding: 40px 32px 32px 40px;
+
+		&-inner {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			grid-column-gap: 48px;
+		}
+
+		&-logo {
+			width: 136px;
+			height: 32px;
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		&-btn {
+			background-color: transparent;
+			border-radius: none;
+			cursor: pointer;
+		}
+	}
+
+	&_long {
+		max-width: 280px;
+	}
+
+	&_short {
+		max-width: 76px;
+		
+		.app-sidebar__head {
+			display: block;
+			padding: 40px 0 32px 0;
+
+			&-logo {
+				display: none;
+			}
+		}
+	}
+}
