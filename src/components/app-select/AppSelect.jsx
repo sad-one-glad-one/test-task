@@ -18,7 +18,11 @@ const AppSelect = ({label, options, selectedOption, setSelectedOption}) => {
 
 	return (
 		<div className="app-select" ref={selectRef}>
-			{label && <AppText text={label} fontSize={12} lineHeight={14} />}
+			{label && 
+				<div className="app-select__label">
+					<AppText text={label} fontSize={12} lineHeight={14} />
+				</div>
+			}
 			<button 
 				className="app-select__btn"
 				onClick={() => toggleSelect()}
