@@ -23,6 +23,11 @@ ul {
 	list-style: none;
 }
 
+#root {
+	width: 100vw;
+	overflow: hidden;
+}
+
 .align-center {
 	display: flex;
 	justify-content: center;

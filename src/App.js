@@ -23,7 +23,7 @@ function App() {
 	const [isOpenModal, setIsOpenModal] = useState(false)
 
   return (
-    <div className="app" style={{display:'grid', gridTemplateColumns: 'max-content 1fr', gridRowGap: '24px'}}>
+    <div className="app" style={{display:'flex', justifyContent: 'space-between', gridColumnGap: '8px'}}>
       <AppSidebar>
 				Somebody once told me the world is gonna roll me<br/>
 				I ain't the sharpest tool in the shed<br/>
@@ -80,6 +80,12 @@ function App() {
 					<AppIcon name="icon-trash" width="64" height="64" color="teal" opacity="0.5" />
 				</div>
 			</div>
+			<AppSidebar isRight={true}>
+				Somebody once told me the world is gonna roll me<br/>
+				I ain't the sharpest tool in the shed<br/>
+				She was looking kind of d*mb with her finger and her thumb<br/>
+				In the shape of an L on her forehead
+			</AppSidebar>
     </div>
   );
 }
