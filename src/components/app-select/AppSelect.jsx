@@ -2,7 +2,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import { AppIcon } from '../app-icon/AppIcon';
 import AppText from '../app-text/AppText';
 import "./index.scss"
-import listenForOutsideClicks from './ListenForOutsideClicks';
 
 const AppSelect = ({label, options, selectedOption, setSelectedOption}) => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -11,8 +10,19 @@ const AppSelect = ({label, options, selectedOption, setSelectedOption}) => {
 	}
 
 	const selectRef = useRef(null)
-  const [listening, setListening] = useState(false)
-  useEffect(listenForOutsideClicks(listening, setListening, selectRef, setIsOpen))
+
+	useEffect(() => {
+		let handler = (e) => {
+			if(!selectRef.current.contains(e.target)) {
+				setIsOpen(false)
+			}
+		}
+		document.addEventListener("mousedown", handler)
+
+		return() => {
+			document.addEventListener("mousedown", handler)
+		}
+	})
 
 	let flippedChevronClass = "app-select__btn-icon_flipped"
 

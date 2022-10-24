@@ -65,25 +65,23 @@ const AppSidebar = ({isRight, children}) => {
 							fontWeight={500}
 						/>
 					</button>
-					{!isShort && 
-						<div className="app-sidebar-right__head-params">
-							<AppSelect 
-								options={selectOptions} 
-								selectedOption={selectedOption} 
-								setSelectedOption={setSelectedOption} 
+					<div className={`app-sidebar-right__head-params ${isShort ? "display-none" : ""}`}>
+						<AppSelect 
+							options={selectOptions} 
+							selectedOption={selectedOption} 
+							setSelectedOption={setSelectedOption} 
+						/>
+						<button
+							className="head-params__btn"
+							onClick={() => alert("Свернуть все")}
+						>
+							<AppText
+								text="Свернуть все"
+								lineHeight={24}
+								color="#2662C9"
 							/>
-							<button
-								className="head-params__btn"
-								onClick={() => alert("Свернуть все")}
-							>
-								<AppText
-									text="Свернуть все"
-									lineHeight={24}
-									color="#2662C9"
-								/>
-							</button>
+						</button>
 						</div>
-					}
 				</div>
 			}
 			<div className="app-sidebar__body">
