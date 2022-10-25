@@ -1,38 +1,23 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect } from "react";
 import "./reset.scss";
 import AppText from "./components/app-text/AppText";
 import AppSidebar from "./components/app-sidebar/AppSidebar";
+import { useDispatch, useSelector } from "react-redux";
+import { getData } from "./api/getData";
 
 function App() {
-	const url = "https://api.vitamin.trade/SupplementsList"
-	const [apiData, setApiData] = useState([])
-	const [isLoading, setIsLoading] = useState(true)
-	const [error, setError] = useState(null)
+	const data = useSelector(state => state.fromApi.data)
+	const isLoading = useSelector(state => state.fromApi.isLoading)
+	const dispatch = useDispatch()
 
 	useEffect(() => {
-		fetch(url, {
-			headers: {
-				accept: "application/json",
-				Authorization: "ers45bsGH^)()Hhj"
-			},
-  		method: "GET"
-		})
-			.then(res => res.json())
-			.then (response => setApiData(response.SupplementsList))
-			.catch((err) => {
-				setError(err.message)
-				alert(error)
-				setApiData(null)
-			})
-			.finally(() => {
-        setIsLoading(false)
-      })
-	})
+		dispatch(getData())
+	}, [])
 
   return (
 		<div>
 			{isLoading ? 
-				<div>Loading...</div> 
+				<div>Loading...</div>
 				:
 				<div className="app" style={{display:'flex', justifyContent: 'space-between', gridColumnGap: '8px'}}>
 					<AppSidebar>
@@ -42,10 +27,10 @@ function App() {
 						In the shape of an L on her forehead
 					</AppSidebar>
 					<div>
-						{apiData.map((item) => (
-							<div key={item.GoodsCommercialName}>
+						{data?.map((item) => (
+							<div key={item?.GoodsCommercialName}>
 								<AppText
-									text={item.GoodsCommercialName}
+									text={item?.GoodsCommercialName}
 								/>
 							</div>
 						))}
