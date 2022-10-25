@@ -36,6 +36,10 @@ ul {
 ::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.32);
   border-radius: 4px;
+
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.38);
+	}
 }
 
 #root {
