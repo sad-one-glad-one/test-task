@@ -38,6 +38,16 @@
 		grid-column-gap: 4px;
 		width: fit-content;
 		cursor: pointer;
+
+		&_asc svg {
+			transition: transform ease .3s;
+			transform: scale(1, 1);
+		}
+
+		&_desc svg {
+			transition: transform ease .3s;
+			transform: scale(1, -1);
+		}
 	}
 
 	&__product {
