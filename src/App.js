@@ -4,7 +4,7 @@ import "./index.scss";
 import AppSidebar from "./components/app-sidebar/AppSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "./api/getData";
-import DataTable from "./components/app-table/DataTable";
+import DataTable from "./components/data-table/DataTable";
 import AppText from "./components/app-text/AppText";
 import { AppIcon } from './components/app-icon/AppIcon';
 import { sortData } from "./store/LocalDataReducer";
