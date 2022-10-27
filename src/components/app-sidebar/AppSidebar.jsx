@@ -5,12 +5,10 @@ import AppText from '../app-text/AppText';
 import "./index.scss"
 import Logo from "./logo.png"
 
-const AppSidebar = ({isRight, children}) => {
-	const [isShort, setIsShort] = useState(false)
+const AppSidebar = ({ isShort, setIsShort, isRight, children }) => {
 	const toggleSidebar = () => {
 		setIsShort(!isShort)
 	}
-
 	let appSidebar = isRight && isShort ? "app-sidebar-right app-sidebar-right_short" 
 												: isRight && !isShort ? "app-sidebar-right app-sidebar-right_long" 
 													: !isRight && isShort ? "app-sidebar app-sidebar_short"
