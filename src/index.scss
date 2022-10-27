@@ -1,7 +1,11 @@
 .navbar-body {
 
-	&__title_active {
-		background-color: rgba(0, 0, 0, 0.08);
+	&__title{
+		cursor: pointer;
+
+		&_active {
+			background-color: rgba(0, 0, 0, 0.08);
+		}
 	}
 
 	&__list {
