@@ -2,7 +2,8 @@ import {
 	fetchDataAction, 
 	setErrorsAction, 
 	toggleIsLoadingAction 
-} from "../store/DataReducer"
+} from "../store/ApiDataReducer"
+import { copyApiDataAction } from "../store/LocalDataReducer"
 
 const url = "https://api.vitamin.trade/SupplementsList"
 
@@ -18,6 +19,7 @@ export const getData = () => {
 			.then(res => res.json())
 			.then (response => {
 				dispatch(fetchDataAction(response.SupplementsList))
+				dispatch(copyApiDataAction(response.SupplementsList))
 			})
 			.catch((error) => {
 				dispatch(setErrorsAction(error))
