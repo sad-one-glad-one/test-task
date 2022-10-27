@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { sortData } from '../../store/DataReducer';
+import { sortData } from '../../store/LocalDataReducer';
 import AppButton from '../app-button/AppButton';
 import { AppIcon } from '../app-icon/AppIcon';
 import AppText from '../app-text/AppText';
@@ -8,7 +8,7 @@ import "./index.scss";
 
 const DataTable = () => {
 	const dispatch = useDispatch()
-	const data = useSelector(state => state.fromApi.data)
+	const data = useSelector(state => state.fromStore.data)
 	let sortingArray = [...data]
 	let [sortableTitle, setSortableTitle] = useState([
 		{key: "GoodsCommercialName", direction: "ascending", isActive: false},
