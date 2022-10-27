@@ -7,12 +7,11 @@ import { getData } from "./api/getData";
 import DataTable from "./components/app-table/DataTable";
 import AppText from "./components/app-text/AppText";
 import { AppIcon } from './components/app-icon/AppIcon';
-import { copyApiDataAction, sortData } from "./store/LocalDataReducer";
+import { sortData } from "./store/LocalDataReducer";
 
 function App() {
 	const isLoading = useSelector(state => state.fromApi.isLoading)
 	const apiData = useSelector(state => state.fromApi.data)
-	// const storeData = useSelector(state => state.fromStore.data)
 	const dispatch = useDispatch()
 
 	const [navbar] = useState([
@@ -35,11 +34,14 @@ function App() {
 
 	const sortArr = (type) => {
 		let sortedData = apiData.filter(eachVal => {
-			let currentVal = eachVal.Purposes.some((
-					{ Purpose }) => Purpose === type)
+			let currentVal = eachVal.Purposes.some(
+				({ Purpose }) => Purpose === type)
 			return currentVal
 		})
 		dispatch(sortData(sortedData))
+	}
+	const restoreArr = () => {
+		dispatch(sortData(apiData))
 	}
 
 	useEffect(() => {
@@ -54,7 +56,10 @@ function App() {
 				<div className="app" style={{display:'flex', justifyContent: 'space-between', gridColumnGap: '8px'}}>
 					<AppSidebar isShort={isNavbarShort} setIsShort={setIsNavbarShort}>
 						<nav className={`navbar-body ${isNavbarShort ? "navbar-body_short" : "navbar-body_long"}`}>
-							<header className="navbar-body__title navbar-body__title_active">
+							<header
+								className="navbar-body__title navbar-body__title_active"
+								onClick={() => restoreArr()}
+							>
 								<AppText text="Каталог" fontWeight={500} lineHeight={16} />
 							</header>
 							<ul className={`navbar-body__list `}>
