@@ -8,7 +8,9 @@ import DataTable from "./components/data-table/DataTable";
 import AppText from "./components/app-text/AppText";
 import { AppIcon } from './components/app-icon/AppIcon';
 import { sortData } from "./store/LocalDataReducer";
-import AppModal from "./components/app-modal/AppModal"
+import AppModal from "./components/app-modal/AppModal";
+import AppTabs from "./components/app-tabs/AppTabs";
+import AppCollapse from "./components/app-collapse/AppCollapse";
 
 function App() {
 	const isLoading = useSelector(state => state.fromApi.isLoading)
@@ -45,6 +47,12 @@ function App() {
 	const restoreArr = () => {
 		dispatch(sortData(apiData))
 	}
+
+	const [activeTab, setActiveTab] = useState(1)
+	const tabs = [
+		{index: 1, text: "По времени приёма"},
+		{index: 2, text: "По биодобавке"}
+	]
 
 	useEffect(() => {
 		dispatch(getData())
@@ -106,7 +114,7 @@ function App() {
 					<DataTable />
 					<AppSidebar isShort={isBasketShort} setIsShort={setIsBasketShort} isRight={true}>
 						<div className="basketbar-body_short">
-							{isBasketShort ? 
+							{isBasketShort && basketData.length > 0 ? 
 								basketData?.map((item, i) => (
 									<div className="basketbar-body__item" key={i}>
 										<div className="align-center img-wrap">
@@ -119,9 +127,21 @@ function App() {
 										<AppText text={item.item?.GoodsCommercialName} />
 									</div>
 								))
-								:
-								<div>
+							: isBasketShort && basketData.length < 1 ?
+								<div className="basketbar-body_short-empty">
+									<AppText text="Выберите биодобавку, чтобы собрать свой персональный курс" />
 								</div>
+							: !isBasketShort ?
+								<div>
+									<AppTabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
+									{basketData.map((item,i) => (
+										<AppCollapse title={<div>test</div>}>
+											quack
+										</AppCollapse>
+									))}
+								</div>
+							: 
+								<div/>
 							}
 						</div>
 					</AppSidebar>
