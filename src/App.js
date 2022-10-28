@@ -8,6 +8,7 @@ import DataTable from "./components/data-table/DataTable";
 import AppText from "./components/app-text/AppText";
 import { AppIcon } from './components/app-icon/AppIcon';
 import { sortData } from "./store/LocalDataReducer";
+import AppModal from "./components/app-modal/AppModal"
 
 function App() {
 	const isLoading = useSelector(state => state.fromApi.isLoading)
@@ -108,6 +109,7 @@ function App() {
 						She was looking kind of d*mb with her finger and her thumb<br/>
 						In the shape of an L on her forehead
 					</AppSidebar>
+					<AppModal />
 				</div>
 			}
 		</div>

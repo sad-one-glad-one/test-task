@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { sortData } from '../../store/LocalDataReducer';
+import { openModalAction } from '../../store/ModalReducer';
 import AppButton from '../app-button/AppButton';
 import { AppIcon } from '../app-icon/AppIcon';
 import AppText from '../app-text/AppText';
@@ -112,7 +113,7 @@ const DataTable = () => {
 								/>
 							</td>
 							<td>
-								<AppButton text={"Добавить"} />
+								<AppButton text={"Добавить"} onClick={() => dispatch(openModalAction(item))} />
 							</td>
 						</tr>
 					))}
