@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addToBasketAction } from '../../store/BasketReducer';
 import { closeModalAction } from '../../store/ModalReducer';
 import AppButton from '../app-button/AppButton';
 import { AppIcon } from '../app-icon/AppIcon';
@@ -8,7 +9,7 @@ import AppText from '../app-text/AppText';
 import "./index.scss"
 
 const AppModal = () => {
-	const dispath = useDispatch()
+	const dispatch = useDispatch()
 	let isOpen = useSelector(state => state.modal.modalState.isOpen)
 	let modalData = useSelector(state => state.modal.modalState.modalData)
 
@@ -40,11 +41,32 @@ const AppModal = () => {
 	]
 	const [selectedDosageOption, setSelectedDosageOption] = useState("1 таблетка")
 
+	const handleSendToBasket = () => {
+		let sendData = {
+			rules: {
+				period: selectedPeriodOption,
+				daily: selectedDailyOption,
+				time: selectedTimeOption,
+				dosage: selectedDosageOption
+			},
+			item: {...modalData}
+		}
+		dispatch(addToBasketAction(sendData))
+		dispatch(closeModalAction())
+		resetInputsValue()
+	}
+
+	const resetInputsValue = () => {
+		setSelectedPeriodOption("Ежедневно")
+		setSelectedDailyOption(1)
+		setSelectedTimeOption("11:00")
+		setSelectedDosageOption("1 таблетка")
+	}
 
 	return (
 		<div 
 			className={`app-modal ${isOpen ? 'app-modal_opened' : ''}`}
-			onClick={() => dispath(closeModalAction())}
+			onClick={() => dispatch(closeModalAction())}
 		>
 			<div 
 				className={`app-modal__content ${isOpen ? 'app-modal_opened' : ''}`}
@@ -112,7 +134,10 @@ const AppModal = () => {
 						</div>
 					</div>
 					<div className="app-modal__body-btn">
-						<AppButton text="Добавить в курс" />
+						<AppButton
+							text="Добавить в курс"
+							onClick={() => handleSendToBasket()}
+						/>
 					</div>
 				</div>
 			</div>

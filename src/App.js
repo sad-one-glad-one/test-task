@@ -13,6 +13,7 @@ import AppModal from "./components/app-modal/AppModal"
 function App() {
 	const isLoading = useSelector(state => state.fromApi.isLoading)
 	const apiData = useSelector(state => state.fromApi.data)
+	const basketData = useSelector(state => state.basket.basketData)
 	const dispatch = useDispatch()
 
 	const [navbar] = useState([
@@ -104,10 +105,9 @@ function App() {
 					</AppSidebar>
 					<DataTable />
 					<AppSidebar isShort={isBasketShort} setIsShort={setIsBasketShort} isRight={true}>
-						Somebody once told me the world is gonna roll me<br/>
-						I ain't the sharpest tool in the shed<br/>
-						She was looking kind of d*mb with her finger and her thumb<br/>
-						In the shape of an L on her forehead
+						{basketData?.map((item, i) => (
+							<div key={i}>item</div>
+						))}
 					</AppSidebar>
 					<AppModal />
 				</div>

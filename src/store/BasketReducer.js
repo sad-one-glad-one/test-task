@@ -8,7 +8,7 @@ const REMOVE_FROM_BASKET = "REMOVE_FROM_BASKET"
 export const basketReducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case ADD_TO_BASKET:
-			return {...state, basketData: [...state.basketData, ...action.payload]}
+			return {...state, basketData: [...state.basketData, action.payload]}
 		
 		default:
 			return state
