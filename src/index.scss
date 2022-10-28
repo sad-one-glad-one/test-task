@@ -54,3 +54,35 @@
 		}
 	}
 }
+
+.basketbar-body_short {
+	display: flex;
+	flex-direction: column;
+	grid-row-gap: 12px;
+	
+	.basketbar-body__item {
+		display: grid;
+		grid-template-columns: max-content auto;
+		align-items: center;
+		grid-column-gap: 16px;
+		padding: 0 24px;
+
+		.img-wrap {
+			height: 32px;
+			width: 32px;
+			border-radius: 50%;
+			overflow: hidden;
+
+			img {
+				height: 100%;
+				width: auto;
+			}
+		}
+
+		.app-text {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+}

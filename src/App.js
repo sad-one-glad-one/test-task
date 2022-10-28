@@ -105,9 +105,25 @@ function App() {
 					</AppSidebar>
 					<DataTable />
 					<AppSidebar isShort={isBasketShort} setIsShort={setIsBasketShort} isRight={true}>
-						{basketData?.map((item, i) => (
-							<div key={i}>item</div>
-						))}
+						<div className="basketbar-body_short">
+							{isBasketShort ? 
+								basketData?.map((item, i) => (
+									<div className="basketbar-body__item" key={i}>
+										<div className="align-center img-wrap">
+											<img
+												src={item.item?.Picture}
+												alt="mini image"
+												draggable={false}
+												/>
+										</div>
+										<AppText text={item.item?.GoodsCommercialName} />
+									</div>
+								))
+								:
+								<div>
+								</div>
+							}
+						</div>
 					</AppSidebar>
 					<AppModal />
 				</div>
