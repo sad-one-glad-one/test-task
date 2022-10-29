@@ -67,18 +67,6 @@
 		grid-column-gap: 16px;
 		padding: 0 24px;
 
-		.img-wrap {
-			height: 32px;
-			width: 32px;
-			border-radius: 50%;
-			overflow: hidden;
-
-			img {
-				height: 100%;
-				width: auto;
-			}
-		}
-
 		.app-text {
 			white-space: nowrap;
 			overflow: hidden;
@@ -90,5 +78,50 @@
 		max-width: 250px;
 		width: 100%;
 		padding: 0 16px 0 64px;
+	}
+}
+
+.basketbar-body {
+	display: flex;
+	flex-direction: column;
+	grid-row-gap: 16px;
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		grid-row-gap: 8px;
+		padding: 0 24px;
+
+		.select-title {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			grid-column-gap: 8px;
+	
+			&__name {
+				display: flex;
+				align-items: center;
+				grid-column-gap: 16px;
+			}
+	
+			&__info {
+				display: grid;
+				grid-template-columns: auto max-content;
+				align-items: center;
+				grid-column-gap: 8px;
+			}
+		}
+	}
+}
+
+.img-wrap {
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
+	overflow: hidden;
+
+	img {
+		height: 100%;
+		width: auto;
 	}
 }

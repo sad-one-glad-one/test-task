@@ -113,7 +113,7 @@ function App() {
 					</AppSidebar>
 					<DataTable />
 					<AppSidebar isShort={isBasketShort} setIsShort={setIsBasketShort} isRight={true}>
-						<div className="basketbar-body_short">
+						<div className={isBasketShort ? "basketbar-body_short" : "basketbar-body"}>
 							{isBasketShort && basketData.length > 0 ? 
 								basketData?.map((item, i) => (
 									<div className="basketbar-body__item" key={i}>
@@ -132,13 +132,86 @@ function App() {
 									<AppText text="Выберите биодобавку, чтобы собрать свой персональный курс" />
 								</div>
 							: !isBasketShort ?
-								<div>
+								<div className="basketbar-body">
 									<AppTabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-									{basketData.map((item,i) => (
-										<AppCollapse title={<div>test</div>}>
-											quack
-										</AppCollapse>
-									))}
+									<div className="basketbar-body__list">
+										{/* ПО ВРЕМЕНИ ПРИЁМА */}
+										{activeTab === 1 && basketData.map((item) => (
+											<AppCollapse
+												key={`by-appointment-time-${Date.now()}`}
+												title={
+													<div className="select-title">
+														<div className="select-title__name">
+															<div className="align-center img-wrap">
+																<img
+																	src={item.item?.Picture}
+																	alt="mini image"
+																	draggable={false}
+																/>
+															</div>
+															<AppText
+																text={item.rules?.time}
+																fontWeight={500}
+																lineHeight={24}
+															/>
+														</div>
+														<div className="select-title__info">
+															<AppText text={item.item?.GoodsCommercialName} />
+															<div
+															className="align-center"
+															onClick={(e) => {e.stopPropagation(); alert('remove')}}>
+																<AppIcon
+																	name="icon-trash"
+																	width="24" 
+																	height="24" 
+																	color="#A61911"
+																/>
+															</div>
+														</div>
+													</div>
+												}>
+												bark
+											</AppCollapse>
+										))}
+										{/* ПО БИОДОБАВКЕ */}
+										{activeTab === 2 && basketData.map((item, i) => (
+											<AppCollapse 
+												key={`by-bioadditives-${Date.now()}`} 
+												title={
+													<div className="select-title">
+														<div className="select-title__name">
+															<div className="align-center img-wrap">
+																<img
+																	src={item.item?.Picture}
+																	alt="mini image"
+																	draggable={false}
+																/>
+															</div>
+															<AppText
+																text={item.item?.GoodsCommercialName}
+																fontWeight={500}
+																lineHeight={24}
+															/>
+														</div>
+														<div className="select-title__info">
+															<AppText text={item.rules?.time} />
+															<div
+															className="align-center"
+															onClick={(e) => {e.stopPropagation(); alert('remove')}}>
+																<AppIcon
+																	name="icon-trash"
+																	width="24" 
+																	height="24" 
+																	color="#A61911"
+																/>
+															</div>
+														</div>
+													</div>
+												}>
+												quack
+											</AppCollapse>
+										))}
+									</div>
 								</div>
 							: 
 								<div/>
