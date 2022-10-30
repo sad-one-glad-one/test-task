@@ -18,6 +18,25 @@
 
 			&:hover {
 				background-color: #2C59A5;
+
+				.stroke-svg path {
+					stroke: #ffffff;
+				}
+
+				.fill-svg path {
+					fill: #ffffff;
+				}
+
+				.double-params-svg {
+
+					.fill-param {
+						fill: #ffffff;
+					}
+				
+					.stroke-param {
+						stroke: #ffffff;
+					}
+				}
 			}
 		}
 	}
