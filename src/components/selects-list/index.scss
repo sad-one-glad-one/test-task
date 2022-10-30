@@ -15,6 +15,12 @@
 		}
 	}
 
+	&_multiple {
+		display: flex;
+		flex-direction: column;
+		grid-row-gap: 16px;
+	}
+
 	.cross-btn {
 		background-color: transparent;
 		margin-top: 14px;

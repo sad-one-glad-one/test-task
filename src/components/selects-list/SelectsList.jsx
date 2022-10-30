@@ -17,16 +17,25 @@ const SelectsList = ({
     { name: "Еженедельно" },
     { name: "Ежемесячно" },
   ]
-  const dailyOptions = [{ name: 1 }, { name: 2 }, { name: 3 }]
+  const dailyOptions = [{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }]
   const timeOptions = [{ name: "11:00" }, { name: "12:00" }, { name: "13:00" }]
-  const dosageOptions = [{ name: 1 }, { name: 2 }, { name: 3 }, { name: 0.5 }]
+  const dosageOptions = [
+    { name: "1 таблетка" },
+    { name: "2 таблетки" },
+    { name: "3 таблетки" },
+    { name: "4 таблетки" },
+  ]
 
   let tempMultiState = [...multiSelected]
 
   useEffect(() => {
     if (dailySelected - multiSelected.length >= 1) {
       for (let i = 1; i <= dailySelected - multiSelected.length; i++) {
-        tempMultiState.push({ time: "11:00", dosage: 1, id: Date.now() + i })
+        tempMultiState.push({
+          time: "11:00",
+          dosage: "1 таблетка",
+          id: Date.now() + i,
+        })
       }
       setMultiSelected([...tempMultiState])
     } else if (dailySelected - multiSelected.length < 0) {

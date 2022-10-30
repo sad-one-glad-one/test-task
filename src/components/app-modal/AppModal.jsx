@@ -15,7 +15,7 @@ const AppModal = () => {
   const [selectedPeriodOption, setSelectedPeriodOption] = useState("Ежедневно")
   const [selectedDailyOption, setSelectedDailyOption] = useState(1)
   const [selectedMultiOptions, setSelectedMultiOptions] = useState([
-    { time: "11:00", dosage: 1, id: Date.now() + 10 },
+    { time: "11:00", dosage: "1 таблетка", id: Date.now() + 10 },
   ])
 
   const handleSendToBasket = () => {
@@ -35,7 +35,9 @@ const AppModal = () => {
   const resetInputsValue = () => {
     setSelectedPeriodOption("Ежедневно")
     setSelectedDailyOption(1)
-    setSelectedMultiOptions([{ time: "11:00", dosage: 1, id: Date.now() + 10 }])
+    setSelectedMultiOptions([
+      { time: "11:00", dosage: "1 таблетка", id: Date.now() + 10 },
+    ])
   }
 
   return (
@@ -60,7 +62,11 @@ const AppModal = () => {
           </div>
           <div className="app-modal__header-counter">
             <AppText
-              text={`${selectedDailyOption} приём: 11:00 `}
+              text={`${selectedDailyOption} приём${
+                selectedDailyOption > 1 ? "a" : ""
+              }: ${selectedMultiOptions.map(
+                (item) => ` ${item.time} ${item.dosage[0]} шт`
+              )}`}
               fontSize={14}
               lineHeight={24}
             />
