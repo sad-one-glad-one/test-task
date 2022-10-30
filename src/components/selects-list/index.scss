@@ -1,0 +1,28 @@
+.selects-list {
+	display: grid;
+	grid-template-columns: max-content max-content;
+	justify-content: space-between;
+	grid-column-gap: 16px;
+
+	&__wrap{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		grid-column-gap: 16px;
+
+		&_left {
+			height: fit-content;
+		}
+	}
+
+	.cross-btn {
+		background-color: transparent;
+		margin-top: 14px;
+		cursor: pointer;
+
+		&_disabled {
+			cursor: not-allowed;
+			pointer-events: none;
+		}
+	}
+}
