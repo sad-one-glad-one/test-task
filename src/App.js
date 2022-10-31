@@ -122,6 +122,14 @@ function App() {
                         fontWeight={500}
                         lineHeight={16}
                       />
+                      <div className="navbar-body__title-icon align-center">
+                        <AppIcon
+                          name="icon-chevron-up"
+                          width="24"
+                          height="24"
+                          color="rgba(0, 0, 0, 0.64)"
+                        />
+                      </div>
                     </header>
                     <ul className="navbar-body__list"></ul>
                   </div>

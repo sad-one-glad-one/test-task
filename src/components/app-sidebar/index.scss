@@ -1,123 +1,131 @@
-.app-sidebar, .app-sidebar-right {
-	width: 100%;
+.app-sidebar,
+.app-sidebar-right {
+  width: 100%;
 }
 
 .app-sidebar {
-	border-right: 1px solid rgba(0, 0, 0, 0.32);
-	transition: max-width ease .3s;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(0, 0, 0, 0.32);
+  transition: max-width ease 0.3s;
 
-	&__head {
-		padding: 40px 32px 32px 40px;
+  &__head {
+    padding: 40px 32px 32px 40px;
 
-		&-inner {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			grid-column-gap: 48px;
-		}
+    &-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-column-gap: 48px;
+    }
 
-		&-logo {
-			width: 136px;
-			height: 32px;
+    &-logo {
+      width: 136px;
+      height: 32px;
 
-			img {
-				width: 100%;
-				height: auto;
-			}
-		}
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
 
-		&-btn {
-			background-color: transparent;
-			border-radius: none;
-			cursor: pointer;
-		}
-	}
+    &-btn {
+      background-color: transparent;
+      border-radius: none;
+      cursor: pointer;
+    }
+  }
 
-	&_long {
-		max-width: 280px;
-	}
+  &__body {
+    display: flex;
+    height: 100%;
+  }
 
-	&_short {
-		max-width: 76px;
-		
-		.app-sidebar__head {
-			display: block;
-			padding: 40px 0 32px 0;
+  &_long {
+    max-width: 280px;
+  }
 
-			&-logo {
-				display: none;
-			}
-		}
-	}
+  &_short {
+    max-width: 76px;
+
+    .app-sidebar__head {
+      display: block;
+      padding: 40px 0 32px 0;
+
+      &-logo {
+        display: none;
+      }
+    }
+  }
 }
 
 .app-sidebar-right {
-	background-color: #F9F9F9;
-	border-left: 1px solid rgba(0, 0, 0, 0.32);
-	transition: max-width ease-in-out 1s;
+  background-color: #f9f9f9;
+  border-left: 1px solid rgba(0, 0, 0, 0.32);
+  transition: max-width ease-in-out 1s;
 
-	&__head {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		grid-column-gap: 68px;
-		padding: 42px 24px 10px 24px;
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-column-gap: 68px;
+    padding: 42px 24px 10px 24px;
 
-		&-btn {
-			display: flex;
-			align-items: center;
-			grid-column-gap: 16px;
-			height: 50px;
-			background-color: transparent;
-			cursor: pointer;
+    &-btn {
+      display: flex;
+      align-items: center;
+      grid-column-gap: 16px;
+      height: 50px;
+      background-color: transparent;
+      cursor: pointer;
 
-			.app-text {
-				white-space: nowrap;
-			}
+      .app-text {
+        white-space: nowrap;
+      }
 
-			&-icon {
-				transform: rotate(90deg);
-				transition: transform ease 0.3s;
+      &-icon {
+        transform: rotate(90deg);
+        transition: transform ease 0.3s;
 
-				&_flipped {
-					transform: rotate(270deg);
-				}
-			}
-		}
+        &_flipped {
+          transform: rotate(270deg);
+        }
+      }
+    }
 
-		&-params {
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			grid-column-gap: 32px;
-			width: 100%;
+    &-params {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      grid-column-gap: 32px;
+      width: 100%;
 
-			.app-select {
-				max-width: 256px;
-				width: 100%;
+      .app-select {
+        max-width: 256px;
+        width: 100%;
 
-				.app-text {
-					white-space: nowrap;
-				}
-			}
+        .app-text {
+          white-space: nowrap;
+        }
+      }
 
-			.head-params__btn {
-				background-color: transparent;
-				cursor: pointer;
+      .head-params__btn {
+        background-color: transparent;
+        cursor: pointer;
 
-				.app-text {
-					white-space: nowrap;
-					border-bottom: 1px dashed #2662C9;
-				}
-			}
-		}
-	}
+        .app-text {
+          white-space: nowrap;
+          border-bottom: 1px dashed #2662c9;
+        }
+      }
+    }
+  }
 
-	&_long {
-		max-width: 728px;
-	}
+  &_long {
+    max-width: 728px;
+  }
 
-	&_short {
-		max-width: 280px;
-	}
+  &_short {
+    max-width: 280px;
+  }
 }
