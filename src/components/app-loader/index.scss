@@ -1,0 +1,32 @@
+.app-loader__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-loader {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  animation: rotate 0.7s linear infinite;
+
+  &__circle {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke-width: 6;
+    stroke: #2662c9;
+    stroke-linecap: round;
+    stroke-dasharray: 37;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

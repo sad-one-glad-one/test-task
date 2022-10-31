@@ -11,6 +11,7 @@ import { sortData } from "./store/LocalDataReducer"
 import AppModal from "./components/app-modal/AppModal"
 import AppTabs from "./components/app-tabs/AppTabs"
 import AppCollapse from "./components/app-collapse/AppCollapse"
+import AppLoader from "./components/app-loader/AppLoader"
 
 function App() {
   const isLoading = useSelector((state) => state.fromApi.isLoading)
@@ -60,7 +61,9 @@ function App() {
   return (
     <div>
       {isLoading ? (
-        <div>Loading...</div>
+        <div>
+          <AppLoader />
+        </div>
       ) : (
         <div
           className="app"
