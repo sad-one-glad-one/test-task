@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addToBasketAction } from "../../store/BasketReducer"
 import { closeModalAction } from "../../store/ModalReducer"
@@ -12,33 +13,33 @@ const AppModal = () => {
   let isOpen = useSelector((state) => state.modal.modalState.isOpen)
   let modalData = useSelector((state) => state.modal.modalState.modalData)
 
-  const [selectedPeriodOption, setSelectedPeriodOption] = useState("Ежедневно")
-  const [selectedDailyOption, setSelectedDailyOption] = useState(1)
-  const [selectedMultiOptions, setSelectedMultiOptions] = useState([
-    { time: "11:00", dosage: "1 таблетка", id: Date.now() + 10 },
-  ])
+  const [titleCounter, setTitleCounter] = useState("")
+  const [sendData, setSendData] = useState({})
+  const [shouldResetValues, setShouldResetValues] = useState(false)
 
-  const handleSendToBasket = () => {
-    let sendData = {
-      rules: {
-        period: selectedPeriodOption,
-        daily: selectedDailyOption,
-        multi: selectedMultiOptions,
-      },
-      item: { ...modalData },
-    }
+  const updateSendData = (data, title) => {
+    setTitleCounter(title)
+    setSendData(data)
+  }
+
+  const handleSendDataToBasket = () => {
     dispatch(addToBasketAction(sendData))
     dispatch(closeModalAction())
-    resetInputsValue()
+    setShouldResetValues(true)
   }
 
-  const resetInputsValue = () => {
-    setSelectedPeriodOption("Ежедневно")
-    setSelectedDailyOption(1)
-    setSelectedMultiOptions([
-      { time: "11:00", dosage: "1 таблетка", id: Date.now() + 10 },
-    ])
-  }
+  useEffect(() => {
+    let defaultData = {
+      id: Date.now(),
+      rules: {
+        period: "Ежедневно",
+        daily: 1,
+        multi: [{ time: "11:00", dosage: "1 таблетка", id: Date.now() + 10 }],
+      },
+      item: modalData,
+    }
+    setSendData(defaultData)
+  }, [isOpen])
 
   return (
     <div
@@ -61,30 +62,20 @@ const AppModal = () => {
             />
           </div>
           <div className="app-modal__header-counter">
-            <AppText
-              text={`${selectedDailyOption} приём${
-                selectedDailyOption > 1 ? "a" : ""
-              }: ${selectedMultiOptions.map(
-                (item) => ` ${item.time} ${item.dosage[0]} шт`
-              )}`}
-              fontSize={14}
-              lineHeight={24}
-            />
+            <AppText text={titleCounter} fontSize={14} lineHeight={24} />
           </div>
         </div>
         <div className="app-modal__body">
           <SelectsList
-            periodSelected={selectedPeriodOption}
-            setPeriodSelected={setSelectedPeriodOption}
-            dailySelected={selectedDailyOption}
-            setDailySelected={setSelectedDailyOption}
-            multiSelected={selectedMultiOptions}
-            setMultiSelected={setSelectedMultiOptions}
+            isFromModal={true}
+            updateSendData={updateSendData}
+            shouldResetValues={shouldResetValues}
+            setShouldResetValues={setShouldResetValues}
           />
           <div className="app-modal__body-btn">
             <AppButton
               text="Добавить в курс"
-              onClick={() => handleSendToBasket()}
+              onClick={() => handleSendDataToBasket()}
             />
           </div>
         </div>

@@ -1,16 +1,17 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { AppIcon } from "../app-icon/AppIcon"
 import AppSelect from "../app-select/AppSelect"
 import "./index.scss"
 
 const SelectsList = ({
-  periodSelected,
-  setPeriodSelected,
-  dailySelected,
-  setDailySelected,
-  multiSelected,
-  setMultiSelected,
+  mountedItem,
+  isFromModal,
+  updateSendData,
+  shouldResetValues,
+  setShouldResetValues,
 }) => {
+  const dispatch = useDispatch()
   const periodOptions = [
     { name: "Ежедневно" },
     { name: "Через день" },
@@ -25,9 +26,53 @@ const SelectsList = ({
     { name: "3 таблетки" },
     { name: "4 таблетки" },
   ]
+  const [periodSelected, setPeriodSelected] = useState("Ежедневно")
+  const [dailySelected, setDailySelected] = useState(1)
+  const [multiSelected, setMultiSelected] = useState([
+    { time: "11:00", dosage: "1 таблетка", id: Date.now() + 10 },
+  ])
+
+  let modalData = useSelector((state) => state.modal.modalState.modalData)
+
+  const resetInputsValue = () => {
+    setPeriodSelected("Ежедневно")
+    setDailySelected(1)
+    setMultiSelected([
+      { time: "11:00", dosage: "1 таблетка", id: Date.now() + 10 },
+    ])
+  }
+
+  useEffect(() => {
+    if (isFromModal) {
+      let sendData = {
+        id: Date.now(),
+        rules: {
+          period: periodSelected,
+          daily: dailySelected,
+          multi: multiSelected,
+        },
+        item: { ...modalData },
+      }
+      let titleCounter = `${dailySelected} приём${
+        dailySelected > 1 ? "a" : ""
+      }: ${multiSelected.map((item) => ` ${item.time} ${item.dosage[0]} шт`)}`
+
+      updateSendData(sendData, titleCounter)
+    } else {
+    }
+  }, [periodSelected, dailySelected, multiSelected])
+
+  useEffect(() => {
+    if (shouldResetValues) {
+      setTimeout(() => {
+        resetInputsValue()
+      }, 500)
+      setShouldResetValues(false)
+    }
+  }, [shouldResetValues])
 
   let tempMultiState = [...multiSelected]
-
+  // отслеживает необходимость расширения контейнера времени и дозировки
   useEffect(() => {
     if (dailySelected - multiSelected.length >= 1) {
       for (let i = 1; i <= dailySelected - multiSelected.length; i++) {
@@ -61,8 +106,16 @@ const SelectsList = ({
     tempMultiState = [...multiSelected]
     tempMultiState.splice(index, 1)
     setMultiSelected([...tempMultiState])
-    setDailySelected(--dailySelected)
+    setDailySelected(dailySelected - 1)
   }
+
+  useEffect(() => {
+    if (mountedItem) {
+      setPeriodSelected(mountedItem.rules.period)
+      setDailySelected(mountedItem.rules.daily)
+      setMultiSelected([...mountedItem.rules.multi])
+    }
+  }, [])
 
   return (
     <div className="selects-list">

@@ -10,8 +10,9 @@ import { AppIcon } from "./components/app-icon/AppIcon"
 import { sortData } from "./store/LocalDataReducer"
 import AppModal from "./components/app-modal/AppModal"
 import AppTabs from "./components/app-tabs/AppTabs"
-import AppCollapse from "./components/app-collapse/AppCollapse"
 import AppLoader from "./components/app-loader/AppLoader"
+import CollapseListTime from "./components/collapse-list-time/CollapseListTime"
+import CollapseListBio from "./components/collapse-list-bio/CollapseListBio"
 
 function App() {
   const isLoading = useSelector((state) => state.fromApi.isLoading)
@@ -220,95 +221,9 @@ function App() {
                   />
                   <div className="basketbar-body__list">
                     {/* ПО ВРЕМЕНИ ПРИЁМА */}
-                    {activeTab === 1 &&
-                      basketData.map((item) => (
-                        <AppCollapse
-                          key={`by-appointment-time-${Date.now()}`}
-                          title={
-                            <div className="select-title">
-                              <div className="select-title__name">
-                                <div className="align-center img-wrap">
-                                  <img
-                                    src={item.item?.Picture}
-                                    alt="mini image"
-                                    draggable={false}
-                                  />
-                                </div>
-                                <AppText
-                                  text={item.rules?.time}
-                                  fontWeight={500}
-                                  lineHeight={24}
-                                />
-                              </div>
-                              <div className="select-title__info">
-                                <AppText
-                                  text={item.item?.GoodsCommercialName}
-                                />
-                                <div
-                                  className="align-center"
-                                  onClick={(e) => {
-                                    e.stopPropagation()
-                                    alert("remove")
-                                  }}
-                                >
-                                  <AppIcon
-                                    name="icon-trash"
-                                    width="24"
-                                    height="24"
-                                    color="#A61911"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          }
-                        >
-                          bark
-                        </AppCollapse>
-                      ))}
+                    {activeTab === 1 && <CollapseListTime />}
                     {/* ПО БИОДОБАВКЕ */}
-                    {activeTab === 2 &&
-                      basketData.map((item, i) => (
-                        <AppCollapse
-                          key={`by-bioadditives-${Date.now()}`}
-                          title={
-                            <div className="select-title">
-                              <div className="select-title__name">
-                                <div className="align-center img-wrap">
-                                  <img
-                                    src={item.item?.Picture}
-                                    alt="mini image"
-                                    draggable={false}
-                                  />
-                                </div>
-                                <AppText
-                                  text={item.item?.GoodsCommercialName}
-                                  fontWeight={500}
-                                  lineHeight={24}
-                                />
-                              </div>
-                              <div className="select-title__info">
-                                <AppText text={item.rules?.time} />
-                                <div
-                                  className="align-center"
-                                  onClick={(e) => {
-                                    e.stopPropagation()
-                                    alert("remove")
-                                  }}
-                                >
-                                  <AppIcon
-                                    name="icon-trash"
-                                    width="24"
-                                    height="24"
-                                    color="#A61911"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          }
-                        >
-                          quack
-                        </AppCollapse>
-                      ))}
+                    {activeTab === 2 && <CollapseListBio />}
                   </div>
                 </div>
               ) : (
