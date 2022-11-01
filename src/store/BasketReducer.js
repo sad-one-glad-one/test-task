@@ -11,7 +11,15 @@ export const basketReducer = (state = defaultState, action) => {
     case ADD_TO_BASKET:
       return { ...state, basketData: [...state.basketData, action.payload] }
     case UPDATE_BASKET:
-      return { ...state }
+      const itemIndex = state.basketData.findIndex(
+        (el) => el.id === action.payload.id
+      )
+      const updateBasketValue = [
+        ...state.basketData.slice(0, itemIndex),
+        action.payload,
+        ...state.basketData.slice(itemIndex + 1),
+      ]
+      return { ...state, basketData: [...updateBasketValue] }
     default:
       return state
   }

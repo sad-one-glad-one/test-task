@@ -10,7 +10,7 @@ const CollapseListBio = () => {
   const basketData = useSelector((state) => state.basket.basketData)
 
   return (
-    <section>
+    <section className="collapse-list">
       {basketData.map((item, i) => (
         <AppCollapse
           key={`${Date.now()}-${i}`}

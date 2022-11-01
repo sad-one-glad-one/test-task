@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { updateBasketAction } from "../../store/BasketReducer"
 import { AppIcon } from "../app-icon/AppIcon"
 import AppSelect from "../app-select/AppSelect"
 import "./index.scss"
@@ -12,6 +13,7 @@ const SelectsList = ({
   setShouldResetValues,
 }) => {
   const dispatch = useDispatch()
+  const basketData = useSelector((state) => state.basket.basketData)
   const periodOptions = [
     { name: "Ежедневно" },
     { name: "Через день" },
@@ -58,9 +60,23 @@ const SelectsList = ({
       }: ${multiSelected.map((item) => ` ${item.time} ${item.dosage[0]} шт`)}`
 
       updateSendData(sendData, titleCounter)
-    } else {
+    } else if (!isFromModal) {
+      let sendData = {
+        id: mountedItem.id,
+        test: "tetetete",
+        rules: {
+          period: periodSelected,
+          daily: dailySelected,
+          multi: [...multiSelected],
+        },
+        item: { ...mountedItem.item },
+      }
+      dispatch(updateBasketAction(sendData))
     }
+    // setIsNotFirstIteration((pr) => (pr = true))
   }, [periodSelected, dailySelected, multiSelected])
+
+  const [isNotFirstIteration, setIsNotFirstIteration] = useState(false)
 
   useEffect(() => {
     if (shouldResetValues) {
@@ -109,11 +125,13 @@ const SelectsList = ({
     setDailySelected(dailySelected - 1)
   }
 
+  const [isFirstLoaded, setIsFirstLoaded] = useState(false)
   useEffect(() => {
-    if (mountedItem) {
-      setPeriodSelected(mountedItem.rules.period)
-      setDailySelected(mountedItem.rules.daily)
-      setMultiSelected([...mountedItem.rules.multi])
+    if (mountedItem && !isFirstLoaded) {
+      setPeriodSelected((prev) => (prev = mountedItem.rules.period))
+      setDailySelected((prev) => (prev = mountedItem.rules.daily))
+      setMultiSelected((prev) => (prev = [...mountedItem.rules.multi]))
+      setIsFirstLoaded(true)
     }
   }, [])
 
