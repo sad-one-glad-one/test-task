@@ -1,36 +1,69 @@
 .app-collapse {
-	background: #FFFFFF;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
-	border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16);
+  border-radius: 8px;
 
-	&__header {
-		display: grid;
-		grid-template-columns: max-content auto;
-		align-items: center;
-		grid-column-gap: 16px;
-		width: 100%;
-		background-color: transparent;
-		padding: 12px 16px;
-		cursor: pointer;
-		
-		&-chevron {
-			transform: rotate(180deg);
-			transition: transform ease 0.3s;
+  &__header {
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+    grid-column-gap: 16px;
+    width: 100%;
+    background-color: transparent;
+    padding: 12px 16px;
+    cursor: pointer;
 
-			&_flipped {
-				transform: rotate(0deg);
-			}
-		}
-	}
+    &-chevron {
+      transform: rotate(180deg);
+      transition: transform ease 0.3s;
 
-	&__body {
-		height: 0;
-		overflow: hidden;
-		transition: height ease .3s;
+      &_flipped {
+        transform: rotate(0deg);
+      }
+    }
+  }
 
-		&-inner {
-			padding: 12px 16px 16px 16px;
-			border-top: 1px solid rgba(0, 0, 0, 0.16);
-		}
-	}
+  &__body {
+    height: 0;
+    overflow: hidden;
+    transition: height ease 0.3s;
+
+    &-inner {
+      padding: 12px 16px 16px 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.16);
+    }
+
+    &_opened {
+      overflow: initial;
+      animation: opacity-plus 0.7s linear;
+    }
+
+    &_closed {
+      animation: opacity-minus 0.3s linear;
+    }
+  }
+}
+
+@keyframes opacity-plus {
+  0% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity-minus {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
 }
