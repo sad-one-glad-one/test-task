@@ -60,7 +60,7 @@ const SelectsList = ({
       }: ${multiSelected.map((item) => ` ${item.time} ${item.dosage[0]} шт`)}`
 
       updateSendData(sendData, titleCounter)
-    } else if (!isFromModal) {
+    } else if (!isFromModal && isNotFirstIteration) {
       let sendData = {
         id: mountedItem.id,
         test: "tetetete",
@@ -71,9 +71,10 @@ const SelectsList = ({
         },
         item: { ...mountedItem.item },
       }
-      dispatch(updateBasketAction(sendData))
+      // FIXME: попадаем в луп перерендера
+      // dispatch(updateBasketAction(sendData))
     }
-    // setIsNotFirstIteration((pr) => (pr = true))
+    if (!isNotFirstIteration) setIsNotFirstIteration((pr) => (pr = true))
   }, [periodSelected, dailySelected, multiSelected])
 
   const [isNotFirstIteration, setIsNotFirstIteration] = useState(false)
