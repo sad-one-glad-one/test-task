@@ -1,34 +1,64 @@
 .selects-list {
-	display: grid;
-	grid-template-columns: max-content max-content;
-	justify-content: space-between;
-	grid-column-gap: 16px;
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) max-content;
+  justify-content: space-between;
+  grid-column-gap: 16px;
 
-	&__wrap{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		grid-column-gap: 16px;
+  &__wrap {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 16px;
 
-		&_left {
-			height: fit-content;
-		}
-	}
+    &_left {
+      height: fit-content;
 
-	&_multiple {
-		display: flex;
-		flex-direction: column;
-		grid-row-gap: 16px;
-	}
+      .app-select:first-child {
+        max-width: 204px;
+        width: 100%;
+      }
+    }
+  }
 
-	.cross-btn {
-		background-color: transparent;
-		margin-top: 14px;
-		cursor: pointer;
+  &_multiple {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 16px;
 
-		&_disabled {
-			cursor: not-allowed;
-			pointer-events: none;
-		}
-	}
+    // TODO: при замене на таймпикер удалить
+    .app-select:first-child {
+      .app-select__btn {
+        max-width: 76px;
+        height: 46px;
+        padding: 16px;
+
+        &-icon {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .cross-btn {
+    background-color: transparent;
+    margin-top: 14px;
+    cursor: pointer;
+
+    &_disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}
+
+@media (max-width: 1740px) {
+  .selects-list {
+    grid-template-columns: 1fr;
+    grid-row-gap: 8px;
+
+    &_multiple {
+      align-items: flex-end;
+      border-top: 1px solid rgba(0, 0, 0, 0.16);
+      padding-top: 4px;
+    }
+  }
 }

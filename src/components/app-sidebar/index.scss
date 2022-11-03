@@ -1,6 +1,8 @@
 .app-sidebar,
 .app-sidebar-right {
   width: 100%;
+  height: 100vh;
+  overflow: auto;
 }
 
 .app-sidebar {
@@ -17,6 +19,7 @@
       justify-content: center;
       align-items: center;
       grid-column-gap: 48px;
+      height: 32px;
     }
 
     &-logo {
@@ -69,7 +72,7 @@
     justify-content: space-between;
     align-items: center;
     grid-column-gap: 68px;
-    padding: 42px 24px 10px 24px;
+    padding: 30px 24px 10px 24px;
 
     &-btn {
       display: flex;
@@ -104,7 +107,7 @@
         max-width: 256px;
         width: 100%;
 
-        .app-text {
+        &__btn {
           white-space: nowrap;
         }
       }
@@ -127,5 +130,96 @@
 
   &_short {
     max-width: 280px;
+  }
+}
+
+@media (max-width: 1740px) {
+  .app-sidebar-right {
+    width: 528px;
+
+    &__head {
+      flex-wrap: wrap;
+      grid-column-gap: 8px;
+      grid-row-gap: 4px;
+
+      &-params .app-select {
+        max-width: 200px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .app-sidebar {
+    &_long {
+      max-width: 245px;
+
+      .app-sidebar__head {
+        padding-left: 24px;
+        padding-right: 24px;
+
+        &-inner {
+          justify-content: space-between;
+        }
+      }
+
+      .navbar-body {
+        &__title {
+          padding-left: 24px;
+        }
+
+        &__list-item {
+          padding-left: 32px;
+        }
+
+        &__auth-btn {
+          padding-left: 24px;
+        }
+      }
+    }
+
+    &_short {
+      .navbar-body__title {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .app-sidebar-right {
+    width: 368px;
+
+    &__head {
+      padding-left: 16px;
+
+      &-btn {
+        grid-column-gap: 8px;
+
+        .app-text {
+          font-size: 16px !important;
+        }
+      }
+    }
+
+    &_short {
+      max-width: 200px;
+    }
+
+    .app-tabs__item {
+      max-width: 150px;
+      padding: 8px 2px;
+
+      .app-text {
+        font-size: 12px !important;
+        white-space: nowrap;
+      }
+    }
+
+    .basketbar-body__list {
+      padding: 0 12px;
+    }
+
+    .basketbar-body_short-empty {
+      padding: 0 12px;
+    }
   }
 }
