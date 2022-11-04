@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { sortData } from "../../store/LocalDataReducer"
 import { openModalAction } from "../../store/ModalReducer"
-import AppButton from "../app-button/AppButton"
-import { AppIcon } from "../app-icon/AppIcon"
-import AppText from "../app-text/AppText"
+import { AppIcon } from "../../ui/app-icon/AppIcon"
+import AppButton from "../../ui/app-button/AppButton"
+import AppText from "../../ui/app-text/AppText"
 import "./index.scss"
 
 const DataTable = () => {
@@ -53,7 +53,6 @@ const DataTable = () => {
       : "table-th__sortable_desc"
 
   return (
-    // <div style={{ height: "100vh", overflow: "hidden" }}>
     <div className="table-wrap">
       <table className="table">
         <thead>
@@ -128,7 +127,6 @@ const DataTable = () => {
         </tbody>
       </table>
     </div>
-    // </div>
   )
 }
 

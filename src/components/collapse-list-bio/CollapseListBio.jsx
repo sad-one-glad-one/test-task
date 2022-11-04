@@ -1,8 +1,8 @@
 import React from "react"
 import { useSelector } from "react-redux"
-import AppCollapse from "../app-collapse/AppCollapse"
-import { AppIcon } from "../app-icon/AppIcon"
-import AppText from "../app-text/AppText"
+import { AppIcon } from "../../ui/app-icon/AppIcon"
+import AppCollapse from "../../ui/app-collapse/AppCollapse"
+import AppText from "../../ui/app-text/AppText"
 import SelectsList from "../selects-list/SelectsList"
 import "./index.scss"
 

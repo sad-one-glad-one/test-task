@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { updateBasketAction } from "../../store/BasketReducer"
-import { AppIcon } from "../app-icon/AppIcon"
-import AppSelect from "../app-select/AppSelect"
+import { AppIcon } from "../../ui/app-icon/AppIcon"
+import AppSelect from "../../ui/app-select/AppSelect"
 import "./index.scss"
 
 const SelectsList = ({

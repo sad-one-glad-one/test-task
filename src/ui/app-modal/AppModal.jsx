@@ -5,7 +5,7 @@ import { addToBasketAction } from "../../store/BasketReducer"
 import { closeModalAction } from "../../store/ModalReducer"
 import AppButton from "../app-button/AppButton"
 import AppText from "../app-text/AppText"
-import SelectsList from "../selects-list/SelectsList"
+import SelectsList from "../../components/selects-list/SelectsList"
 import "./index.scss"
 
 const AppModal = () => {

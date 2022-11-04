@@ -1,9 +1,9 @@
 import React from "react"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import AppCollapse from "../app-collapse/AppCollapse"
-import { AppIcon } from "../app-icon/AppIcon"
-import AppText from "../app-text/AppText"
+import AppCollapse from "../../ui/app-collapse/AppCollapse"
+import { AppIcon } from "../../ui/app-icon/AppIcon"
+import AppText from "../../ui/app-text/AppText"
 import "./index.scss"
 
 const CollapseListTime = () => {
