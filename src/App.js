@@ -98,7 +98,6 @@ function App() {
                         <AppText text={item.name} />
                       ) : (
                         <div className="icon-wrap align-center">
-                          {/* TODO: обдумать что делать с hover'ом и иконками */}
                           <AppIcon
                             name={item.icon}
                             width="24"
