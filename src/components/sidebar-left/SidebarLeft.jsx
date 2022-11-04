@@ -104,7 +104,7 @@ const SidebarLeft = () => {
         >
           {isAuth ? (
             <button
-              className="navbar-body__auth-btn navbar-body__auth-btn_logined align-center"
+              className="navbar-body__auth-btn navbar-body__auth-btn_logined"
               onClick={() => setIsAuth(false)}
             >
               <div className="navbar-body__auth-btn-logo align-center">
@@ -121,7 +121,7 @@ const SidebarLeft = () => {
             </button>
           ) : (
             <button
-              className="navbar-body__auth-btn align-center"
+              className="navbar-body__auth-btn"
               onClick={() => setIsAuth(true)}
             >
               <AppIcon

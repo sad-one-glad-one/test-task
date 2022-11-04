@@ -2,7 +2,8 @@
 .app-sidebar-right {
   width: 100%;
   height: 100vh;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .app-sidebar {
