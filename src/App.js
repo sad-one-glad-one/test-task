@@ -15,7 +15,7 @@ function App() {
   switch (currentScreen) {
     default:
       return (
-        <div className="App">
+        <div className="app">
           <SupplementsViews />
         </div>
       )

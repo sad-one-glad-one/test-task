@@ -10,27 +10,14 @@ import "./index.scss"
 const SupplementsViews = () => {
   const isLoading = useSelector((state) => state.fromApi.isLoading)
 
-  return (
-    <div>
-      {isLoading ? (
-        <div>
-          <AppLoader />
-        </div>
-      ) : (
-        <div
-          className="app"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            gridColumnGap: "8px",
-          }}
-        >
-          <SidebarLeft />
-          <DataTable />
-          <SidebarRight />
-          <AppModal />
-        </div>
-      )}
+  return isLoading ? (
+    <AppLoader />
+  ) : (
+    <div className="app-inner">
+      <SidebarLeft />
+      <DataTable />
+      <SidebarRight />
+      <AppModal />
     </div>
   )
 }

@@ -5,6 +5,7 @@ import CollapseListBio from "../../components/collapse-list-bio/CollapseListBio"
 import AppSidebar from "../../ui/app-sidebar/AppSidebar"
 import AppTabs from "../../ui/app-tabs/AppTabs"
 import AppText from "../../ui/app-text/AppText"
+import "./index.scss"
 
 const SidebarRight = () => {
   const basketData = useSelector((state) => state.basket.basketData)

@@ -4,6 +4,7 @@ import { sortData } from "../../store/LocalDataReducer"
 import { AppIcon } from "../../ui/app-icon/AppIcon"
 import AppSidebar from "../../ui/app-sidebar/AppSidebar"
 import AppText from "../../ui/app-text/AppText"
+import "./index.scss"
 
 const SidebarLeft = () => {
   const dispatch = useDispatch()

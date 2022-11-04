@@ -1,0 +1,66 @@
+.basketbar-body_short {
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 12px;
+
+  .basketbar-body__item {
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+    grid-column-gap: 16px;
+    padding: 0 24px;
+
+    .app-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-empty {
+    max-width: 250px;
+    width: 100%;
+    padding: 0 16px 0 64px;
+  }
+}
+
+.basketbar-body {
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 16px;
+  width: 100%;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 8px;
+    padding: 0 24px;
+
+    .select-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      grid-column-gap: 8px;
+
+      &__name {
+        display: grid;
+        grid-template-columns: max-content auto;
+        align-items: center;
+        grid-column-gap: 16px;
+
+        .app-text {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      &__info {
+        display: grid;
+        grid-template-columns: auto max-content;
+        align-items: center;
+        grid-column-gap: 8px;
+      }
+    }
+  }
+}
