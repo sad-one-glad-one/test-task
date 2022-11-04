@@ -9,14 +9,11 @@ import CollapseListBio from "../components/collapse-list-bio/CollapseListBio"
 import CollapseListTime from "../components/collapse-list-time/CollapseListTime"
 import AppModal from "../ui/app-modal/AppModal"
 import "./index.scss"
-import SidebarLeft from "../components/sidear-right/SidebarLeft"
+import SidebarLeft from "../components/sidebar-left/SidebarLeft"
 
 const SupplementsViews = () => {
-  const apiData = useSelector((state) => state.fromApi.data)
-
   const isLoading = useSelector((state) => state.fromApi.isLoading)
   const basketData = useSelector((state) => state.basket.basketData)
-  const dispatch = useDispatch()
 
   const [isBasketShort, setIsBasketShort] = useState(false)
 
